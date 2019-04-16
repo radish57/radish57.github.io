@@ -6,16 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Java_concurrent | Leef的博客</title>
+  <title>Leef的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="article">
-<meta property="og:title" content="Java_concurrent">
-<meta property="og:url" content="http://yoursite.com/2019/04/16/Java-concurrent/index.html">
+  <meta name="description" content="1.进程与线程2.并发概念学习与准备3.并发编程与线程安全3.1.线程安全性​    含义：安全性：当多个线程访问某个类时，不管运行时环境采用何种调度方式或者这些进程将如何交替进行，在主调代码中都不需要任何额外的同步或协同，则称为这个线程是安全的 3.1.1.原子性​    含义：提供互斥访问，同一时刻只能有一个线程来对它操作 1.atomic包1.AtomicXXX（AtomicInteger等">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Leef的博客">
+<meta property="og:url" content="http://yoursite.com/2019/04/16/java-concurrent/index.html">
 <meta property="og:site_name" content="Leef的博客">
+<meta property="og:description" content="1.进程与线程2.并发概念学习与准备3.并发编程与线程安全3.1.线程安全性​    含义：安全性：当多个线程访问某个类时，不管运行时环境采用何种调度方式或者这些进程将如何交替进行，在主调代码中都不需要任何额外的同步或协同，则称为这个线程是安全的 3.1.1.原子性​    含义：提供互斥访问，同一时刻只能有一个线程来对它操作 1.atomic包1.AtomicXXX（AtomicInteger等">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-04-16T05:33:21.720Z">
+<meta property="og:image" content="c:/Users/LeeF/Desktop/java并发与网络编程/笔记图/Condition_demo1.png">
+<meta property="og:image" content="c:/Users/LeeF/Desktop/java并发与网络编程/笔记图/BlockingQueue_method.png">
+<meta property="og:updated_time" content="2019-04-12T05:48:26.766Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Java_concurrent">
+<meta name="twitter:title" content="Leef的博客">
+<meta name="twitter:description" content="1.进程与线程2.并发概念学习与准备3.并发编程与线程安全3.1.线程安全性​    含义：安全性：当多个线程访问某个类时，不管运行时环境采用何种调度方式或者这些进程将如何交替进行，在主调代码中都不需要任何额外的同步或协同，则称为这个线程是安全的 3.1.1.原子性​    含义：提供互斥访问，同一时刻只能有一个线程来对它操作 1.atomic包1.AtomicXXX（AtomicInteger等">
+<meta name="twitter:image" content="c:/Users/LeeF/Desktop/java并发与网络编程/笔记图/Condition_demo1.png">
   
     <link rel="alternative" href="/atom.xml" title="Leef的博客" type="application/atom+xml">
   
@@ -151,27 +157,341 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-Java-concurrent" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-java-concurrent" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      Java_concurrent
-    </h1>
-  
-
-        
-        <a href="/2019/04/16/Java-concurrent/" class="archive-article-date">
-  	<time datetime="2019-04-16T05:33:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-16</time>
-</a>
-        
-      </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h1 id="1-进程与线程"><a href="#1-进程与线程" class="headerlink" title="1.进程与线程"></a>1.进程与线程</h1><h1 id="2-并发概念学习与准备"><a href="#2-并发概念学习与准备" class="headerlink" title="2.并发概念学习与准备"></a>2.并发概念学习与准备</h1><h1 id="3-并发编程与线程安全"><a href="#3-并发编程与线程安全" class="headerlink" title="3.并发编程与线程安全"></a>3.并发编程与线程安全</h1><h2 id="3-1-线程安全性"><a href="#3-1-线程安全性" class="headerlink" title="3.1.线程安全性"></a>3.1.线程安全性</h2><p>​    <strong>含义：</strong>安全性：当多个线程访问某个类时，不管运行时环境采用何种调度方式或者这些进程将如何交替进行，在主调代码中都不需要任何额外的同步或协同，则称为这个线程是安全的</p>
+<h3 id="3-1-1-原子性"><a href="#3-1-1-原子性" class="headerlink" title="3.1.1.原子性"></a>3.1.1.原子性</h3><p>​    <strong>含义：</strong>提供互斥访问，同一时刻只能有一个线程来对它操作</p>
+<h4 id="1-atomic包"><a href="#1-atomic包" class="headerlink" title="1.atomic包"></a>1.atomic包</h4><p>1.AtomicXXX（AtomicInteger等等）</p>
+<ul>
+<li><p>AtomicLong、LongAddr（高并发下建议使用）</p>
+<ul>
+<li>AtomicLong、LongAddr（高并发下建议使用）</li>
+<li>AtomicReference、AtomicReferenceFieldUpdater</li>
+<li>AtomicStampReference：解决CAS的ABA问题</li>
+</ul>
+</li>
+</ul>
+<h4 id="2-CAS算法"><a href="#2-CAS算法" class="headerlink" title="2.CAS算法"></a>2.CAS算法</h4><p>1.主要方法与类</p>
+<ul>
+<li>CAS(compareAndSwap)、Unsafe.compareAndSwapInt</li>
+<li>unsafe类：compareAndSwapInt()</li>
+</ul>
+<p>3.适用场景与区别：</p>
+<ul>
+<li>竞争激烈时能维持常态，比Lock性能好，只能同步一个值</li>
+</ul>
+<h4 id="3-synchronized：依赖JVM"><a href="#3-synchronized：依赖JVM" class="headerlink" title="3.synchronized：依赖JVM"></a>3.synchronized：依赖JVM</h4><p>1.修饰对象</p>
+<ul>
+<li>类：所有对象</li>
+<li>静态方法：所有对象</li>
+<li>代码块：调用的对象</li>
+<li>方法：调用的对象</li>
+</ul>
+<p>2.注意点</p>
+<ul>
+<li>synchronized的父类其子类不能继承父类的锁</li>
+</ul>
+<p>3.适用场景与区别</p>
+<ul>
+<li>不可中断锁，适合竞争不激烈的情况，可读性好</li>
+</ul>
+<h4 id="4-Lock：依赖特殊的CPU指令"><a href="#4-Lock：依赖特殊的CPU指令" class="headerlink" title="4.Lock：依赖特殊的CPU指令"></a>4.Lock：依赖特殊的CPU指令</h4><p>1.实现</p>
+<ul>
+<li>代码实现：ReentrantLock</li>
+</ul>
+<p>2.适用场景与区别</p>
+<ul>
+<li>可中断锁，可多样化同步，在竞争激烈时能维持常态</li>
+</ul>
+<h5 id="4-1-悲观锁与乐观锁"><a href="#4-1-悲观锁与乐观锁" class="headerlink" title="4.1.悲观锁与乐观锁"></a>4.1.悲观锁与乐观锁</h5><h3 id="3-1-2-可见性"><a href="#3-1-2-可见性" class="headerlink" title="3.1.2.可见性"></a>3.1.2.可见性</h3><p><strong>含义：</strong>一个线程对主存的修改可以及时的被其它线程所看见</p>
+<h4 id="1-不可见的原因"><a href="#1-不可见的原因" class="headerlink" title="1.不可见的原因"></a>1.不可见的原因</h4><p>1.线程交叉执行</p>
+<p>2.重排序结合线程交叉执行</p>
+<p>3.共享变量更新后的值没有在工作内存与主存间及时更新</p>
+<h4 id="2-volatile实现可见性"><a href="#2-volatile实现可见性" class="headerlink" title="2.volatile实现可见性"></a>2.volatile实现可见性</h4><p><strong>注意：</strong>修饰变量但也不是线程安全的</p>
+<p>原理：通过加入内存屏障和禁止重排序优化实现：</p>
+<ul>
+<li>1.对volatile变量写操作后加入store屏障指令，然后将本地内存的共享变量刷新到主存</li>
+<li>2.对volatile变量读操作之后，加入一条load屏障指令，从主存读取共享变量</li>
+</ul>
+<p>适用场景</p>
+<ul>
+<li><p>1.作状态标识量</p>
+</li>
+<li><p>2.检查两次</p>
+<ul>
+<li>单例模式:</li>
+</ul>
+<p>懒汉模式：</p>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LazySingleton</span> </span>&#123;</span><br><span class="line"><span class="comment">//懒汉式单例模式</span></span><br><span class="line"><span class="comment">//比较懒，在类加载时，不创建实例，因此类加载速度快，但运行时获取对象的速度慢</span></span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> LazySingleton intance = <span class="keyword">null</span>;<span class="comment">//静态私用成员，没有初始化</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">LazySingleton</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="comment">//私有构造函数</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">synchronized</span> LazySingleton <span class="title">getInstance</span><span class="params">()</span></span>&#123;    <span class="comment">//静态，同步，公开访问点</span></span><br><span class="line">        <span class="keyword">if</span>(intance == <span class="keyword">null</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            intance = <span class="keyword">new</span> LazySingleton();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> intance;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>​    饿汉模式：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> Singleton;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">EagerSingleton</span> </span>&#123;</span><br><span class="line"><span class="comment">//饿汉单例模式</span></span><br><span class="line"> <span class="comment">//在类加载时就完成了初始化，所以类加载较慢，但获取对象的速度快</span></span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> EagerSingleton instance = <span class="keyword">new</span> EagerSingleton();<span class="comment">//静态私有成员，已初始化</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">EagerSingleton</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">//私有构造函数</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> EagerSingleton <span class="title">getInstance</span><span class="params">()</span></span>&#123;    <span class="comment">//静态，不用同步（类加载时已初始化，不会有多线程的问题）</span></span><br><span class="line">        <span class="keyword">return</span> instance;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="3-synchronized可见性规定"><a href="#3-synchronized可见性规定" class="headerlink" title="3.synchronized可见性规定"></a>3.synchronized可见性规定</h4><p>规定：</p>
+<ul>
+<li>1.解锁前需刷新主存中共享变量的值</li>
+<li>2.加锁前清空主存中共享变量的值，从而工作内存需要从主存中重新读取数据</li>
+</ul>
+<h3 id="3-1-3-有序性"><a href="#3-1-3-有序性" class="headerlink" title="3.1.3.有序性"></a>3.1.3.有序性</h3><p><strong>含义：</strong>一个线程观察其它线程中指令执行顺序，由于指令重排序的存在，该观察结果一般是杂乱无序的</p>
+<p>原因：允许编译器、处理器对指令进行重排。（重排不影响单线程）</p>
+<h4 id="1-重排序的原则（happens-before）："><a href="#1-重排序的原则（happens-before）：" class="headerlink" title="1.重排序的原则（happens-before）："></a>1.重排序的原则（happens-before）：</h4><p>1.程序次序原则：一个线程内，按照代码顺序，书写在前面的操作先行发生于书写在后面的操作</p>
+<p>2.锁定规则：一个unLock操作先行发生于后面对同一个锁的lock操作</p>
+<p>3.volatile变量规则：对一个变量的写操作先行发生于后面对这个变量的读操作</p>
+<p>4.传递原则：如果A先行与B，B先行于C，则A先行于C</p>
+<p>5.线程启动原则：Thread的start（）先行于此线程其它动作。</p>
+<p>6.线程中断规则：interrupt（）方法调用先行于中断代码检测到中断事件的发生</p>
+<p>7.线程终结规则：线程中所有操作先行于终止检测，我们通过Thread.join()方法结束、Thread.isAlive()返回值手段检测到线程已经终止。</p>
+<p>8.对象终结规则：一个对象的初始化完成先行于它finalize（）方法的开始。</p>
+<h2 id="3-2-安全发布对象"><a href="#3-2-安全发布对象" class="headerlink" title="3.2.安全发布对象"></a>3.2.安全发布对象</h2><h3 id="3-2-1-对象发布与逸出"><a href="#3-2-1-对象发布与逸出" class="headerlink" title="3.2.1.对象发布与逸出"></a>3.2.1.对象发布与逸出</h3><ul>
+<li>对象发布：使一个对象能够被当前范围之外的代码所使用</li>
+<li>对象逸出：一种错误的发布。当一个对象还没有构造完成时，就使它被其他线程所见</li>
+</ul>
+<h3 id="3-2-2-安全发布对象"><a href="#3-2-2-安全发布对象" class="headerlink" title="3.2.2.安全发布对象"></a>3.2.2.安全发布对象</h3><p>​     对象发布的四种方法：</p>
+<p>​    1.在静态初始化函数中初始化一个对象引用</p>
+<p>​    2.将对象的引用保存到volatile类型域或者AtomicReference对象中</p>
+<p>​    3.将对象的引用保存到某个正确构造对象的final类型域中</p>
+<p>​    4.将对象的引用保存到一个由锁保护的域中</p>
+<p>​     双重检测同步锁单例模式   —jvm与cpu优化发生指令重排导致线程不安全</p>
+<p>​        解决办法： 通过使用volatile修饰单例对象 。</p>
+<p>​    </p>
+<h2 id="3-3-线程不安全类"><a href="#3-3-线程不安全类" class="headerlink" title="3.3.线程不安全类"></a>3.3.线程不安全类</h2><h2 id="3-4-不可变对象"><a href="#3-4-不可变对象" class="headerlink" title="3.4.不可变对象"></a>3.4.不可变对象</h2><p>​    <strong>不可变对象是安全的</strong></p>
+<h3 id="3-4-1-不可变对象满足的条件"><a href="#3-4-1-不可变对象满足的条件" class="headerlink" title="3.4.1.不可变对象满足的条件"></a>3.4.1.不可变对象满足的条件</h3><p>​    1.对象创建以后其状态就不能修改</p>
+<p>​    2.对象所有域都是final类型</p>
+<p>​    3.对象是正确创建的（在对象创建期间，this引用没有逸出）</p>
+<p>​    </p>
+<p>​    final关键字：</p>
+<p>​        1.修饰类：不能被继承</p>
+<p>​        2.修饰方法：2.1、锁定方法不被继承类修改；2.2、效率</p>
+<h2 id="3-5-线程封闭"><a href="#3-5-线程封闭" class="headerlink" title="3.5.线程封闭"></a>3.5.线程封闭</h2><h4 id="3-5-1-常见不可修改类与方法"><a href="#3-5-1-常见不可修改类与方法" class="headerlink" title="3.5.1.常见不可修改类与方法"></a>3.5.1.常见不可修改类与方法</h4><p>​        1.Collection.unmodifiableXXX():map,set等等</p>
+<p>​        2.ImmutableXXX():map、set等等</p>
+<h4 id="3-5-2-线程封闭的方法"><a href="#3-5-2-线程封闭的方法" class="headerlink" title="3.5.2.线程封闭的方法"></a>3.5.2.线程封闭的方法</h4><p>   1.Ad-hoc线程封闭：程序控制实现，最糟糕，忽略<br>   2.堆栈封闭：局部变量，无并发问题。（最普通的写法就是实现的这个）<br>   3.ThreadLocal线程封闭：特别好的封闭方法<br>​      用法： 1.创建ThreadLocal，创建添加线程id，获得与移除方法</p>
+<p>​           2.在web的filter之前添加线程的id（Thread.currentThread.getId()）</p>
+<p>​           3.请求完成后移除</p>
+<h4 id="3-5-3-线程不安全的类"><a href="#3-5-3-线程不安全的类" class="headerlink" title="3.5.3.线程不安全的类"></a>3.5.3.线程不安全的类</h4><p>   1.StringBuilder<br>   2.DateFormat<br>   3.ArrayList、HashSet、HashMap等Collections</p>
+<p>   4.先检查后执行（在多线程中不安全）</p>
+<h4 id="3-5-4-同步容器"><a href="#3-5-4-同步容器" class="headerlink" title="3.5.4.同步容器"></a>3.5.4.同步容器</h4><p>   1.ArrayList -&gt; Vector,Stack</p>
+<p>   2.HashMap -&gt; HashTable(key,value不能为null)</p>
+<p>   3.Collections.synchronizedXXX(List、Set、Map)</p>
+<p>​    <strong>注意：同步容易也不是一定安全的</strong></p>
+<h4 id="3-5-5-并发容器–JUC"><a href="#3-5-5-并发容器–JUC" class="headerlink" title="3.5.5.并发容器–JUC"></a>3.5.5.并发容器–JUC</h4><h5 id="3-5-5-1-AQS（AbstractQueuedSynchronizer）"><a href="#3-5-5-1-AQS（AbstractQueuedSynchronizer）" class="headerlink" title="3.5.5.1.AQS（AbstractQueuedSynchronizer）"></a>3.5.5.1.AQS（AbstractQueuedSynchronizer）</h5><p>1.介绍：AQS是使用Node实现的先进先出队列，可以用于构建锁或者其他同步装置的基础框架，</p>
+<p>   除此之外，还有一个Condition类的单向链表用于构建同步框架。AQS用int类型表示状态</p>
+<p>2.使用方法：继承，子类通过继承并通过实现它的方法管理其状态{acquire和release}的方法操纵其状态</p>
+<p>3.可以同时实现排他锁和共享锁模式（独占，共享）</p>
+<p>4.实现过程：</p>
+<ul>
+<li>AQS内部维护了一个CLH队列来管理锁</li>
+<li>线程尝试获取锁<ul>
+<li>如果失败，将当前线程以等待状态的信息包成一个node结点加到队列里</li>
+<li>接着会不断尝试获取锁</li>
+</ul>
+</li>
+<li>能获取锁的条件为：当前线程为队列的head时<ul>
+<li>如果不是head则一直阻塞自己，直到自己被唤醒</li>
+</ul>
+</li>
+<li>而获取锁的线程释放锁时，会唤醒下一个结点的线程</li>
+</ul>
+<p>5.AQS的同步组件</p>
+<ul>
+<li><p>CountDownLatch  –闭锁</p>
+<ul>
+<li>提供了一个原子性操作的计数器，阻塞其它线程</li>
+</ul>
+</li>
+<li><p>Semaphore </p>
+<ul>
+<li>控制同一时间并发线程的数目</li>
+</ul>
+</li>
+<li><p>CyclicBarrier </p>
+<ul>
+<li>–阻塞进程  与  第一个很像  允许一组线程相互等待</li>
+<li>与countdownlatch区别：<ul>
+<li>计数器可以重置</li>
+<li>描述的是多个线程内部相互等待，而countdownlatch是一个或多个线程等待其它线程的关系</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>可以并发计数再合并</p>
+</li>
+<li><p>重点：await()方法。</p>
+</li>
+</ul>
+</li>
+<li><p>ReentrantLock—锁  依赖于操作系统</p>
+<ul>
+<li>独有功能：<ul>
+<li>1.可指定是公平锁还是非公平锁</li>
+<li>2.提供了一个condition类，可以分组唤醒需要唤醒的线程</li>
+<li>3.提供能够中断等待锁的线程的机制，lock.lockInterruptibly()</li>
+</ul>
+</li>
+<li>使用方法：<ul>
+<li>在需要使用的地方用实例对象调用lock（）方法，实现完方法后调用unlock（）方法即可</li>
+</ul>
+</li>
+<li>所有读写都是普通的锁+解锁的话容易产生<strong>悲观锁</strong></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>StampedLock</p>
+<ul>
+<li>能实现乐观锁和悲观锁</li>
+<li>吞吐量巨大改进（特别是在读线程越来越多的情景）</li>
+<li>如果程序中一定需要释放锁，则可使用</li>
+</ul>
+<ul>
+<li><p>Condition</p>
+<ul>
+<li>如果调用await（）方法，则把当前线程从AQS队列移到Condition队列中，然后等待信号继续执行</li>
+<li>在线程2中调用signalAll()发送信号。执行完线程2后把AQS中的线程按顺序唤醒，然后当前线程1继续执行。</li>
+<li><p>实现例子：</p>
+<p><img src="C:\Users\LeeF\Desktop\java并发与网络编程\笔记图\Condition_demo1.png" alt></p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>FutureTask</p>
+<pre><code>- Callable与Runnable接口对比
+- Future
+
+      - 对于Callable与Runnable的任务可以进行取消、判断是否被取消以及获取任务结果的返回值
+</code></pre><ul>
+<li>FutureTask接口继承RunnableFuture<ul>
+<li>RunnableFuture集成Runnable和Future</li>
+<li>组合使用，可以启动线程同时可以获取Callable的执行结果返回值<ul>
+<li>Fork/Join : jdk1.7提供的框架</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>窃取别的线程的任务执行</li>
+<li>双栈队列<ul>
+<li>窃取的队列在头部开始执行 </li>
+<li>被窃取的队列在尾部开始执行 </li>
+</ul>
+</li>
+<li>局限性：<ul>
+<li>不能进行其它同步操作，如果使用，并且使它睡眠，会导致正在执行该工作线程不会执行其它任务</li>
+<li>不应该进行I/O操作</li>
+<li>任务不能抛出检查异常</li>
+</ul>
+</li>
+<li>核心类：<ul>
+<li>ForkJoinPool</li>
+<li>ForkJoinTask<ul>
+<li>BlockingQueue</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>被阻塞情况<ul>
+<li>1.对满的队列进行入队</li>
+<li>2.对一个空队列进行出队</li>
+</ul>
+</li>
+<li>生产者消费者的情况（消息队列—rabbitmq等）</li>
+<li>实现类：<ul>
+<li>ArrayBlockingQueue<ul>
+<li>有界的阻塞队列（有容量大小，先进先出）</li>
+</ul>
+</li>
+<li>DelayQueue<ul>
+<li>阻塞内部元素</li>
+<li>内部元素必须实现Delay接口</li>
+<li>必须排序，而且一般按元素过期时间的优先级</li>
+</ul>
+</li>
+<li>LinkedBlockingQueue<ul>
+<li>可变的容量大小，先进先出</li>
+</ul>
+</li>
+<li>PriorityBlockingQueue<ul>
+<li>允许插入空对象</li>
+<li>插入对象必须实现Compareable接口，排序也是根据对象实现此接口来排</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>在不同需求场景的方法</li>
+</ul>
+</li>
+</ul>
+<p><img src="C:\Users\LeeF\Desktop\java并发与网络编程\笔记图\BlockingQueue_method.png" alt></p>
+<p>​        </p>
+<h5 id="扩展：如何选择锁"><a href="#扩展：如何选择锁" class="headerlink" title="扩展：如何选择锁"></a>扩展：如何选择锁</h5><p>1.当只有少量竞争者时，synchronized是一个很好的通用锁实现（这个锁不会出现死锁，因为是由jvm解锁的，而其它锁可能会出现）</p>
+<p>2.当竞争者不少，但线程增长趋势可以预估的话，可以使用ReentrantLock</p>
+<h2 id="3-6-线程池"><a href="#3-6-线程池" class="headerlink" title="3.6.线程池"></a>3.6.线程池</h2><h3 id="3-6-1-ThreadPoolExecutor"><a href="#3-6-1-ThreadPoolExecutor" class="headerlink" title="3.6.1.ThreadPoolExecutor"></a>3.6.1.ThreadPoolExecutor</h3><p>初始化参数：</p>
+<ul>
+<li>corePoolSize：核心线程数量</li>
+<li>maximumPoolSize：线程最大线程数</li>
+<li>workQueue：阻塞队列，存储等待执行的任务，很重要，会对线程池运行过程产生大量影响</li>
+<li>keepAliveTime:线程没有执行任务时最多保持多久时间终结</li>
+<li>unit：keepAliveTime的时间单位</li>
+<li>threadFactory：线程工厂，用来创建线程</li>
+<li>rejectHandler：当拒绝处理任务时的策略</li>
+</ul>
+<h3 id="3-6-2-Executor框架接口"><a href="#3-6-2-Executor框架接口" class="headerlink" title="3.6.2.Executor框架接口"></a>3.6.2.Executor框架接口</h3><ul>
+<li>Executors.newCachedThreadPool <ul>
+<li>有缓存的线程池，可回收线程</li>
+</ul>
+</li>
+<li>Executors.newFixedThreadPool<ul>
+<li>定长线程池，可控制线程并发数，超出的会在队列中等待</li>
+</ul>
+</li>
+<li>Executors.newScheduledThreadPool<ul>
+<li>定长线程池，支持定时和周期性任务执行</li>
+</ul>
+</li>
+<li>Executors.newSingleThreadExecutor<ul>
+<li>创建单线程的线程池，保证所有任务按照指定顺序执行</li>
+</ul>
+</li>
+</ul>
+<h2 id="3-7-并发拓展"><a href="#3-7-并发拓展" class="headerlink" title="3.7.并发拓展"></a>3.7.并发拓展</h2><h3 id="3-7-1-死锁"><a href="#3-7-1-死锁" class="headerlink" title="3.7.1.死锁"></a>3.7.1.死锁</h3><ul>
+<li>死锁的必要条件</li>
+</ul>
+<p>1.互斥条件</p>
+<p>2.请求和保持条件</p>
+<p>3.不剥夺条件</p>
+<p>4.环路等待条件</p>
+<ul>
+<li>死锁的解决办法<ul>
+<li>注意加锁顺序</li>
+<li>设置加锁时限，当到达一定时间未获取到锁，则放弃该锁的请求</li>
+<li>死锁检测（比较难）</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-7-2-多线程并发最佳实践"><a href="#3-7-2-多线程并发最佳实践" class="headerlink" title="3.7.2.多线程并发最佳实践"></a>3.7.2.多线程并发最佳实践</h3><p>多线程实践建议：</p>
+<ul>
+<li>使用本地变量</li>
+<li>使用不可变类</li>
+<li>最小化锁的作用域范围：S=1/(1-a+a/n)</li>
+<li>使用线程池的Executor,而不是直接new Thread()</li>
+<li>宁可使用同步也不要使用线程的wait()和notify()</li>
+<li>使用BlockingQueue实现生产-消费模式</li>
+<li>使用并发集合而不是加了锁的同步集合</li>
+<li>宁可使用同步代码块，也不要使用同步的方法</li>
+<li>避免使用静态变量<ul>
+<li>如果要使用则建议设置为final变量</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-7-3-Spring与线程安全"><a href="#3-7-3-Spring与线程安全" class="headerlink" title="3.7.3.Spring与线程安全"></a>3.7.3.Spring与线程安全</h3><ul>
+<li>Spring bean：singleton、prototype</li>
+<li>无状态对象</li>
+</ul>
+<h1 id="4-高并发解决方案"><a href="#4-高并发解决方案" class="headerlink" title="4.高并发解决方案"></a>4.高并发解决方案</h1>
       
 
       
@@ -250,7 +570,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/04/16/Java-concurrent/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/04/16/java-concurrent/" alt="微信分享二维码">
     </div>
 </div>
 
